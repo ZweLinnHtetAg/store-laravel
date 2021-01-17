@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,7 +12,13 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\Category::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::table('categories')->truncate();
+        DB::table('products')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        
         \App\Models\Category::factory(10)->create();
+        \App\Models\Product::factory(100)->create();
     }
 }

@@ -40,12 +40,17 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit',compact('category'));
     }
 
     public function update(Request $request, Category $category)
     {
-        //
+        $old_name = $category->name;
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
+
+        return redirect('categories')->with('success',"$old_name is successfully updated!");
     }
 
     public function destroy(Category $category)

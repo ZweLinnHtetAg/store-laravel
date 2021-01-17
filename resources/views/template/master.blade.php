@@ -25,6 +25,9 @@
               <li>
                   <a href="{{ url('categories') }}">Categories</a>
               </li>
+              <li>
+                <a href="{{ url('product') }}">Products</a>
+            </li>
               {{-- <li>
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -73,6 +76,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ url('categories') }}">Categories</a>
                 </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ url('product') }}">Products</a>
+              </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>

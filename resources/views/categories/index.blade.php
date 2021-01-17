@@ -30,7 +30,7 @@
             <td>{{ $category->name }}</td>
             <td>{{ $category->description }}</td>
             <td>
-                <a href="" class="btn btn-success">Edit</a>
+                <a href="{{ url('edit-category/'.$category->id) }}" class="btn btn-success">Edit</a>
             </td>
             <td>
                 <a href="{{ url('delete-category/'.$category->id) }}" class="btn btn-danger" onclick="confirm('Are you sure to delete !')">Delete</a>
