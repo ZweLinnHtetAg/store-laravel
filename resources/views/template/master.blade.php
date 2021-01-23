@@ -20,7 +20,7 @@
             <ul class="list-unstyled components mb-5">
               
             <li>
-                    <a href="#">Home</a>
+                    <a href="{{ url('/') }}">Home</a>
             </li>
               <li>
                   <a href="{{ url('categories') }}">Categories</a>

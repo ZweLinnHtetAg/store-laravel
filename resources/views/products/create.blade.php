@@ -6,7 +6,7 @@
 
 <div class="row justify-content-center">
 <div class="col-6">
-    <form action="{{ url('product') }}" method="POST">
+    <form action="{{ url('product') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="" class="form-label"> Name</label>

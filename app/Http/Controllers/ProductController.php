@@ -22,14 +22,26 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        Product::create($request->all());
+        $file = $request->file('img');
+        $file_name = uniqid().'_'.$file->getClientOriginalName();
+        $file->move(public_path().'/upload/products/',$file_name);
+        
+        Product::create(
+            [
+                'name' => $request->name,
+                'category_id' => $request->category_id,
+                'qty' => $request->qty,
+                'price' => $request->price,
+                'img' => $file_name
+            ]
+        );
         return redirect('product')->with('success',"Successfully added new product ($request->name) ");
     }
 
 
     public function show(Product $product)
     {
-        //
+        return view('products.detail',compact('product'));
     }
 
     public function edit(Product $product)

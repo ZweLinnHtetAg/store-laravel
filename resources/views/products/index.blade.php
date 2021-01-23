@@ -19,8 +19,8 @@
             <th>ID</th>
             <th>name</th>
             <th>category</th>
-            <th>Price</th>
-            <th>Qty</th>
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
         </tr>
@@ -30,9 +30,10 @@
         <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->category_id }}</td>
-            <td>$ {{ $product->price }}</td>
-            <td>{{ $product->qty }}</td>
+            <td>{{ $product->category->name }}</td>
+            <td>
+                <a href="{{ route('product.show', $product->id) }}" class="btn btn-info">Detail</a> </td>
+            <td>
             <td>
                 <a href="{{ url('product/'.$product->id.'/edit ')  }}" class="btn btn-success">Edit</a> </td>
             <td>
