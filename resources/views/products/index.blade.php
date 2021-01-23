@@ -34,9 +34,16 @@
             <td>$ {{ $product->price }}</td>
             <td>{{ $product->qty }}</td>
             <td>
-                <a href="" class="btn btn-success">Edit</a> </td>
+                <a href="{{ url('product/'.$product->id.'/edit ')  }}" class="btn btn-success">Edit</a> </td>
             <td>
-                <a href="" class="btn btn-danger" onclick="return confirm('Are you sure ?')">Delete </a>
+                <form action="{{ url('/product/'.$product->id) }}" method="POST">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                        Delete
+                    </button>
+                </form>
+            
             </td>
         </tr
        @empty

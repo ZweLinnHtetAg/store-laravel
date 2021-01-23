@@ -23,52 +23,38 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         Product::create($request->all());
-
         return redirect('product')->with('success',"Successfully added new product ($request->name) ");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Product $product)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('products.edit',compact('product','categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Product $product)
     {
-        //
+        $old_name = $product->name;
+        $product->name = $request->name;
+        $product->qty = $request->qty;
+        $product->price = $request->price;
+        $product->img = $request->img;
+        $product->category_id = $request->category_id;
+        $product->save();
+        
+        return redirect('product')->with('success',"$old_name is successfully updated!");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
-        //
+        $name = $product->name;
+        $product->delete();
+        return redirect('product')->with('success', "$name is delete Success !");
     }
 }
